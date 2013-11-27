@@ -1,6 +1,9 @@
 package models;
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import play.data.validation.Email;
 import play.data.validation.Password;
 import play.data.validation.Required;
@@ -30,23 +33,12 @@ public class Customer extends Model {
     @Required
     @Password
     public String password;
+    
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    public List<Order> orders;
 
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String address, String city,
-            String state, String zip, String phone, String fax, String email, String password) {
-        
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-        this.phone = phone;
-        this.fax = fax;
-        this.email = email;
-        this.password = password;
-    }
 
 }

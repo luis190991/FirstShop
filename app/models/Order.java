@@ -1,26 +1,25 @@
 package models;
 
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import play.db.jpa.Model;
 
 @Entity
 public class Order extends Model {
 
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    public Customer customer;
+    @ManyToOne
+    public Customer customer;
     public Date orderDate;
     public Date shippedDate;
+    
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    List<OrderDetail> orderDetails;
 
     public Order() {
-    }
-
-    public Order(Customer customer, Date orderDate, Date shippedDate) {
-        //this.customer = customer;
-        this.orderDate = orderDate;
-        this.shippedDate = shippedDate;
     }
 
 }
