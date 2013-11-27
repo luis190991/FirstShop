@@ -4,26 +4,28 @@ import com.google.gson.Gson;
 import java.util.List;
 import models.Order;
 import play.mvc.Controller;
+import play.mvc.With;
 
 /**
  *
  * @author Henry
  */
+@With(Security.class)
 public class Orders extends Controller {
 
     public static void orders() {
 
-        List<Order> customers = Order.findAll();
-        renderJSON(customers);
+        List<Order> orders = Order.findAll();
+        renderJSON(orders);
 
     }
 
     public static void deleteOrder(Long id) {
 
-        Order o = Order.findById(id);
+        Order p = Order.findById(id);
 
-        if (o != null) {
-            o.delete();
+        if (p != null) {
+            p.delete();
             renderJSON(id);
         } else {
             id *= -1;
@@ -48,10 +50,10 @@ public class Orders extends Controller {
         Order newOrder = g.fromJson(params.get("body"), Order.class);
         Order dbOrder = Order.findById(id);
 
-        dbOrder.customer = newOrder.customer;
+//        dbOrder.customer = newOrder.customer;
         dbOrder.orderDate = newOrder.orderDate;
         dbOrder.shippedDate = newOrder.shippedDate;
-        
+
         dbOrder.save();
         renderJSON(dbOrder);
 

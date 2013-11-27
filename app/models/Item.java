@@ -1,22 +1,26 @@
 package models;
 
 import javax.persistence.Entity;
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 @Entity
 public class Item extends Model {
-
-    private String title;
-    private String artist;
-    private Double unit_price;
+    
+    @Required
+    public String title;
+    @Required
+    public String artist;
+    @Required
+    public Double unitPrice;
 
     public Item() {
     }
 
-    public Item(String title, String artist, Double unit_price) {
+    public Item(String title, String artist, Double unitPrice) {
         this.title = title;
         this.artist = artist;
-        this.unit_price = unit_price;
+        this.unitPrice = unitPrice;
     }
 
 }

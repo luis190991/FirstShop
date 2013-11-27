@@ -3,7 +3,13 @@
 # ~~~~
 
 # Home page
-GET     /                                       Application.index
+GET        /                                    Application.index
+GET        /orders                              Orders.orders
+POST       /orders                              Orders.saveOrder
+PUT        /orders/{id}                         Orders.updateOrder
+DELETE     /orders/{id}                         Orders.deleteOrder
+*          /                                    module:secure
+*          /admin                               module:crud
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

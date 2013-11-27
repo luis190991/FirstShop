@@ -1,14 +1,12 @@
 package controllers;
 
-import com.google.gson.Gson;
-import java.util.List;
-import models.Item;
-import play.mvc.Controller;
+import play.mvc.With;
 
 /**
  *
  * @author Henry
  */
-public class Items extends Controller {
+@With(Security.class)
+public class Items extends CRUD {
 
 }
