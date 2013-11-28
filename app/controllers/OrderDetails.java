@@ -10,7 +10,6 @@ import play.mvc.With;
  *
  * @author Henry
  */
-@With(Security.class)
 public class OrderDetails extends Controller {
 
     public static void OrderDetails() {

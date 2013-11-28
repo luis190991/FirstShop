@@ -17,7 +17,7 @@ public class Order extends Model {
     public Date shippedDate;
     
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    List<OrderDetail> orderDetails;
+    public List<OrderDetail> orderDetails;
 
     public Order() {
     }

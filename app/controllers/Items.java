@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Item;
 import play.mvc.With;
 
 /**
@@ -8,5 +9,10 @@ import play.mvc.With;
  */
 @With(Security.class)
 public class Items extends CRUD {
+    
+    public static void items() {
+        renderJSON(Item.findAll());
+
+    }
 
 }
