@@ -1,7 +1,7 @@
 package controllers;
 
+import models.Customer;
 import play.mvc.With;
-
 
 /**
  *
@@ -9,5 +9,10 @@ import play.mvc.With;
  */
 @With(Security.class)
 public class Customers extends CRUD {
-
+    
+    public static void customers() {
+        
+        renderJSON(Customer.findAll());
+        
+    }
 }

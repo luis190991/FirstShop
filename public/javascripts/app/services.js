@@ -8,13 +8,15 @@
 
 angular.module('myApp.services', ['ngResource']).
         factory('itemsRest', function($resource) {
-            return $resource('/items/:id',
-                    {id: '@id'},
-            {
-                update: {method: 'put', isArray: false},
-                delete: {method: 'delete', isArray: false}
-            }
+            return $resource('/items',[]
             );
 
         }
-        ).value('version', '0.1');
+        ).
+        factory('customers', function($resource) {
+            return $resource('/customers/:id',
+                    {id: '@id'}
+            );
+
+        })
+        .value('version', '0.1');

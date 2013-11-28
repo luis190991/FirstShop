@@ -9,6 +9,7 @@ POST       /orders                              Orders.saveOrder
 PUT        /orders/{id}                         Orders.updateOrder
 DELETE     /orders/{id}                         Orders.deleteOrder
 GET        /items                               Items.items
+GET        /customers                           Customers.customers
 *          /                                    module:secure
 *          /admin                               module:crud
 
