@@ -7,11 +7,11 @@ import java.util.*;
 
 import models.*;
 
-@With(Secure.class)
+//@With(Secure.class)
 public class Application extends Controller {
 
     public static void index() {
-        String user = Security.connected();
+       // String user = Security.connected();
         render();
     }
 

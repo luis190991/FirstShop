@@ -1,0 +1,29 @@
+<div class="container">
+    <h1>Ventas</h1>
+
+    <div id="ctrl-exmpl">
+        Nº Orden: <input type="number" /><br>
+        Cliente: <input type="text" ng-model="name"/>
+        Fecha de Orden: <input type="datetime" />
+        Fecha de Compra: <input type="datetime" />
+
+        Detalle de Ventas
+        <ul>
+            <li ng-repeat="orderDetail in orderDetails">
+
+                <select ng-model="orderDetail.type" ng-options="c.title for c in items">
+                    <option value="">-- Seleccione Producto --</option>
+                </select>
+
+                <input type="number" />
+
+                | <a href="" ng-click="removeOrderDetail(orderDetail)">X</a> ]
+
+            </li>
+            <li>[ <a href="" ng-click="addOrderDetail()">add</a> ]</li>
+        </ul>
+    </div>
+
+
+
+</div>

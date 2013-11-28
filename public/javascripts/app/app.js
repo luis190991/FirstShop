@@ -19,7 +19,7 @@ angular.module
                         $routeProvider.when('/orders',
                                 {
                                     templateUrl: 'public/partials/order.html',
-                                    controller: 'OrderCtrl'
+                                    controller: 'orderCtrl'
                                 }
                         );
 
