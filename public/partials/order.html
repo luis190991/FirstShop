@@ -11,13 +11,14 @@
         <ul>
             <li ng-repeat="orderDetail in orderDetails">
 
-                <select ng-model="orderDetail.type" ng-options="c.title for c in items">
+                <select ng-model="orderDetail.item" ng-options="c.title for c in items">
                     <option value="">-- Seleccione Producto --</option>
                 </select>
 
                 <input type="number" />
 
-                | <a href="" ng-click="removeOrderDetail(orderDetail)">X</a> ]
+                [ <a href="" ng-click="removeOrderDetail(orderDetail)">X</a> |
+                  <a href="" ng-click="saveOrderDetail(orderDetail)">Guardar</a> ]
 
             </li>
             <li>[ <a href="" ng-click="addOrderDetail()">add</a> ]</li>

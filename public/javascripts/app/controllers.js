@@ -19,27 +19,31 @@ var orderCtrl = function ($scope, itemsRest) {
         "title": "Una Camcion Z",
         "artist": "Una Artista Z",
         "unitPrice": 3.14
-    }]
+    }];
 
     $scope.name = "John Smith";
     $scope.orderDetails = [{
-        type: 'phone',
-        value: '408 555 1212'
+        item: 'phone',
+        quantity: 44.3
     }, {
-        type: 'email',
-        value: 'john.smith@example.org'
+        item: 'email',
+        quantity: 14.3
     }];
 
     $scope.addOrderDetail = function () {
         this.orderDetails.push({
-            type: 'email',
-            value: 'yourname@example.org'
+            item: 'email',
+            quantity: 23.3
         });
     };
 
-    $scope.removeOrderDetail = function (contactToRemove) {
-        var index = this.orderDetails.indexOf(contactToRemove);
+    $scope.removeOrderDetail = function (orderDetailToRemove) {
+        var index = this.orderDetails.indexOf(orderDetailToRemove);
         this.orderDetails.splice(index, 1);
+    };
+    
+    $scope.saveOrderDetail= function (orderDetailToRemove) {
+        //TODO enviar a la Base de Datos
     };
 
     itemsRest.query(function (data) {
