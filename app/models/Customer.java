@@ -7,6 +7,7 @@ import javax.persistence.OneToMany;
 import play.data.validation.Email;
 import play.data.validation.Password;
 import play.data.validation.Required;
+import play.data.validation.URL;
 import play.db.jpa.Model;
 
 @Entity
@@ -33,6 +34,8 @@ public class Customer extends Model {
     @Required
     @Password
     public String password;
+    @URL
+    public String urlImage;
     
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     public List<Order> orders;
@@ -40,5 +43,21 @@ public class Customer extends Model {
     public Customer() {
     }
 
+    public Customer(String firstName, String lastName, String address, String city, 
+                    String state, String zip, String phone, String fax, String email, String password, String urlImage) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.phone = phone;
+        this.fax = fax;
+        this.email = email;
+        this.password = password;
+        this.urlImage = urlImage;
+    }
+    
+    
 
 }
