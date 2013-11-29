@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
-<testsuite failures="0" time="0.161" errors="0" skipped="0" tests="2" name="BasicTest">
-  <testcase classname="BasicTest" name="createCustomersTest" time="0.105">
-      </testcase>
-  <testcase classname="BasicTest" name="createItemsTest" time="0.056">
-      </testcase>
-</testsuite>
