@@ -53,13 +53,13 @@ var orderCtrl = function ($scope, items, customers, orders, orderDetails) {
     });
     
     customers.query(function (data) {
-        $scope.items = data;
+        
         console.log("customers");
         console.log(data);
     });
     
     orders.query(function (data) {
-        $scope.items = data;
+        
         console.log("orders");
         console.log(data);
     });
