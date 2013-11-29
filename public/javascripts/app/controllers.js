@@ -1,7 +1,7 @@
 /* Controllers */
 var app = angular.module('myApp.controllers', ['ngResource']);
 
-var orderCtrl = function ($scope, itemsRest) {
+var orderCtrl = function ($scope, items, customers, orders, orderDetails) {
 
     //Estos son todos los Productos
     $scope.items = [{
@@ -46,9 +46,26 @@ var orderCtrl = function ($scope, itemsRest) {
         //TODO enviar a la Base de Datos
     };
 
-    itemsRest.query(function (data) {
+    items.query(function (data) {
         $scope.items = data;
         console.log("Items");
+        console.log(data);
+    });
+    
+    customers.query(function (data) {
+        $scope.items = data;
+        console.log("customers");
+        console.log(data);
+    });
+    
+    orders.query(function (data) {
+        $scope.items = data;
+        console.log("orders");
+        console.log(data);
+    });
+    
+    orderDetails.query(function (data) {
+        console.log("OrdersDetails");
         console.log(data);
     });
 
