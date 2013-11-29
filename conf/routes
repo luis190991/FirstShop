@@ -4,10 +4,17 @@
 
 # Home page
 GET        /                                    Application.index
+
 GET        /orders                              Orders.orders
 POST       /orders                              Orders.saveOrder
 PUT        /orders/{id}                         Orders.updateOrder
 DELETE     /orders/{id}                         Orders.deleteOrder
+
+GET        /orderDetails                        OrderDetails.OrderDetails
+POST       /orderDetails                        OrderDetails.saveOrderDetail
+PUT        /orders/{id}                         OrderDetails.updateOrder
+DELETE     /orders/{id}                         OrderDetails.deleteOrderDetail
+
 GET        /items                               Items.items
 GET        /customers                           Customers.customers
 *          /                                    module:secure

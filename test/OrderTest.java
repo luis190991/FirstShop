@@ -31,43 +31,39 @@ public class OrderTest extends UnitTest {
         o.customer = customers.get(1);
         o.orderDate = new Date();
         o.shippedDate = new Date();
-
+        
+        o.save();
+        
         OrderDetail od = new OrderDetail();
-
         od.item = items.get(1);
         od.quantity = 10.0;
-        ods = new ArrayList<OrderDetail>();
-        ods.add(od);
-        o.orderDetails = ods;
-        o.save();
-
+        od.order = o;
+        
+        od.save();
+        
         o = new Order();
         o.customer = customers.get(2);
         o.orderDate = new Date();
         o.shippedDate = new Date();
-
+        o.save();
+        
         od = new OrderDetail();
         od.item = items.get(2);
         od.quantity = 10.0;
-        ods = new ArrayList<OrderDetail>();
-        ods.add(od);
-        o.orderDetails = ods;
-
-        o.save();
+        od.order = o;
+        od.save();
 
         o = new Order();
         o.customer = customers.get(3);
         o.orderDate = new Date();
         o.shippedDate = new Date();
-
+        o.save();
+        
         od = new OrderDetail();
         od.item = items.get(2);
         od.quantity = 10.0;
-        ods = new ArrayList<OrderDetail>();
-        ods.add(od);
-        o.orderDetails = ods;
-
-        o.save();
+        od.order = o;
+        od.save();
     }
 
 }
