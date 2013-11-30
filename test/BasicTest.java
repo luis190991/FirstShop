@@ -7,11 +7,11 @@ public class BasicTest extends UnitTest {
 
     @Test
     public void createCustomersTest() {
-        new Customer("Gustavo", "Ruiz", "Chimborazo", "Chihuahua", "Chihuahua", "31000", "123456789", "", "henry@correo.com", "12345678","").save();
-        new Customer("Luis", "Ramirez", "Decima", "Delicias", "Chihuahua", "31000", "876543", "", "luis@correo.com", "12345678","").save();
-        new Customer("Francisco", "Frances", "Tecnologico", "Chihuahua", "Chihuahua", "31000", "984574", "", "pancho@correo.com", "12345678","").save();
-        new Customer("Samuel", "Herrera", "Martires Agraristas", "Chihuahua", "Chihuahua", "31000", "456456", "", "samuel@correo.com", "12345678","").save();
-        new Customer("Juan", "Perez", "Una Calle", "Chihuahua", "Chihuahua", "31000", "123456789", "54f", "juan@correo.com", "12345678","").save();
+        new Customer("Gustavo", "Ruiz", "Chimborazo", "Chihuahua", "Chihuahua", "31000", "123456789", "", "henry@correo.com", "12345678").save();
+        new Customer("Luis", "Ramirez", "Decima", "Delicias", "Chihuahua", "31000", "876543", "", "luis@correo.com", "12345678").save();
+        new Customer("Francisco", "Frances", "Tecnologico", "Chihuahua", "Chihuahua", "31000", "984574", "", "pancho@correo.com", "12345678").save();
+        new Customer("Samuel", "Herrera", "Martires Agraristas", "Chihuahua", "Chihuahua", "31000", "456456", "", "samuel@correo.com", "12345678").save();
+        new Customer("Juan", "Perez", "Una Calle", "Chihuahua", "Chihuahua", "31000", "123456789", "54f", "juan@correo.com", "12345678").save();
 
     }
 
