@@ -18,6 +18,8 @@ public class Order extends Model {
     
 
     public Order() {
+        orderDate = new Date();
+        shippedDate = new Date();
     }
 
 }

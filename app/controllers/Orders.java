@@ -1,6 +1,7 @@
 package controllers;
 
 import com.google.gson.Gson;
+import java.util.Date;
 import java.util.List;
 import models.Order;
 import play.mvc.Controller;
@@ -40,6 +41,8 @@ public class Orders extends Controller {
         Order newOrder = new Order();
 
         newOrder = g.fromJson(params.get("body"), Order.class);
+        newOrder.orderDate = new Date();
+        newOrder.shippedDate = new Date();
         newOrder.save();
         renderJSON(newOrder);
 
