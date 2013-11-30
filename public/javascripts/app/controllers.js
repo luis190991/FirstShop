@@ -21,7 +21,7 @@ var orderCtrl = function ($scope, items, customers, orders, orderDetails) {
         "unitPrice": 3.14
     }];
 
-    $scope.name = "John Smith";
+    $scope.customers = [];
     $scope.orderDetails = [{
         item: 'phone',
         quantity: 44.3
@@ -53,7 +53,7 @@ var orderCtrl = function ($scope, items, customers, orders, orderDetails) {
     });
     
     customers.query(function (data) {
-        
+        $scope.customers = data;
         console.log("customers");
         console.log(data);
     });

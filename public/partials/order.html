@@ -1,29 +1,74 @@
 <div class="container">
     <h1>Ventas</h1>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form class="form form-vertical">
 
-    <div id="ctrl-exmpl">
-        Nº Orden: <input type="number" /><br>
-        Cliente: <input type="text" ng-model="name"/>
-        Fecha de Orden: <input type="datetime" />
-        Fecha de Compra: <input type="datetime" />
+                <div class="control-group">
+                    <label>No. Orden</label>
+                    <div class="controls">
+                        <input type="number" class="form-control"/>
+                    </div>
+                </div>      
 
-        Detalle de Ventas
-        <ul>
-            <li ng-repeat="orderDetail in orderDetails">
+                <div class="control-group">
+                    <label>Cliente:</label>
+                    <div class="controls">
+                        <select class="form-control" ng-model="customer" 
+                                ng-options="c.firstName for c in customers">
+                            <option value="">Selecciona un Cliente.</option>
+                        </select>
+                    </div>
+                </div>
 
-                <select ng-model="orderDetail.item" ng-options="c.title for c in items">
-                    <option value="">-- Seleccione Producto --</option>
-                </select>
+                <div class="control-group">
+                    <label>Fecha de Orden:</label>
+                    <div class="controls">
+                        <input class="form-control" type="datetime"  ng-model="orderDate"/>
+                    </div>
+                </div>
 
-                <input type="number" />
+                <div class="control-group">
+                    <label>Fecha de Envío</label>
+                    <div class="controls">
+                        <input class="form-control" type="datetime"  ng-model="shippedDate"/>
+                    </div>
+                </div>
+                <br>
+                <label>Detalle de Orden:</label>
+                <div class="list-unstyled">
+                    <a  class="list-group-item" ng-repeat="orderDetail in orderDetails">
+                        <select ng-model="orderDetail.item" ng-options="c.title for c in items">
+                            <option value="">-- Seleccione Producto --</option>
+                        </select>
+                        <input ng-model="orderDetail.quantity" type="number" min="0"/>
+                        <button ng-click="removeOrderDetail(orderDetail)" class="btn btn-danger btn-xs" >X</button>
+                        <button ng-click="saveOrderDetail(orderDetail)" class="btn btn-success btn-xs" >Guardar</button>
+                        
+                    </a>
+                    <br>
+                    <a ng-click="addOrderDetail()" class="btn btn-primary" >+</a>
+                </div>
 
-                [ <a href="" ng-click="removeOrderDetail(orderDetail)">X</a> |
-                  <a href="" ng-click="saveOrderDetail(orderDetail)">Guardar</a> ]
+                <div class="control-group">
+                    <label></label>
+                    <div class="controls">
+                        <button type="submit" class="btn btn-primary">
+                            Post
+                        </button>
+                    </div>
+                </div>
 
-            </li>
-            <li>[ <a href="" ng-click="addOrderDetail()">add</a> ]</li>
-        </ul>
+            </form>
+
+
+        </div>
+
+
+
+
     </div>
+
 
 
 
