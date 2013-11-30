@@ -1,70 +1,69 @@
 /* Controllers */
 var app = angular.module('myApp.controllers', ['ngResource']);
 
-var orderCtrl = function ($scope, items, customers, orders, orderDetails) {
+var orderCtrl = function($scope, Item, Customer, Order, OrderDetail) {
 
     //Estos son todos los Productos
-    $scope.items = [{
-        "id": 1,
-        "title": "Una Camcion X",
-        "artist": "Una Artista X",
-        "unitPrice": 3.14
-    }, {
-        "id": 2,
-        "title": "Una Camcion Y",
-        "artist": "Una Artista Y",
-        "unitPrice": 3.14
-    }, {
-        "id": 3,
-        "title": "Una Camcion Z",
-        "artist": "Una Artista Z",
-        "unitPrice": 3.14
-    }];
-
+    $scope.order = new Order();
+    $scope.orderDetail = new OrderDetail();
+    $scope.items = [];
     $scope.customers = [];
-    $scope.orderDetails = [{
-        item: 'phone',
-        quantity: 44.3
-    }, {
-        item: 'email',
-        quantity: 14.3
-    }];
+    $scope.orders = [];
+    $scope.allOrderDetails = [];
+    $scope.orderDetails = [];
 
-    $scope.addOrderDetail = function () {
-        this.orderDetails.push({
-            item: 'email',
-            quantity: 23.3
-        });
+    $scope.addOrderDetail = function() {
+        this.orderDetails.push(new OrderDetail());
     };
 
-    $scope.removeOrderDetail = function (orderDetailToRemove) {
+    $scope.removeOrderDetail = function(orderDetailToRemove) {
         var index = this.orderDetails.indexOf(orderDetailToRemove);
         this.orderDetails.splice(index, 1);
     };
-    
-    $scope.saveOrderDetail= function (orderDetailToRemove) {
+
+    $scope.saveOrderDetail = function(orderDetailToRemove) {
         //TODO enviar a la Base de Datos
     };
 
-    items.query(function (data) {
+    $scope.saveOrder = function() {
+        $scope.order.$save(function(data) {
+
+            $scope.orders.push($scope.order);
+            console.log(data);
+
+            angular.forEach($scope.orderDetails, function(orderDetail) {
+
+                orderDetail.order = $scope.order;
+                orderDetail.$save(function(data) {
+                    console.log(data);
+                });
+            });
+
+            $scope.order = new Order();
+            $scope.orderDetails = [];
+        });
+    };
+
+    Item.query(function(data) {
         $scope.items = data;
         console.log("Items");
         console.log(data);
     });
-    
-    customers.query(function (data) {
+
+    Customer.query(function(data) {
         $scope.customers = data;
         console.log("customers");
         console.log(data);
     });
-    
-    orders.query(function (data) {
-        
+
+    Order.query(function(data) {
+        $scope.orders = data;
         console.log("orders");
         console.log(data);
     });
-    
-    orderDetails.query(function (data) {
+
+    OrderDetail.query(function(data) {
+        $scope.allOrderDetails = data;
         console.log("OrdersDetails");
         console.log(data);
     });

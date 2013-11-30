@@ -37,7 +37,9 @@ public class Orders extends Controller {
     public static void saveOrder() {
 
         Gson g = new Gson();
-        Order newOrder = g.fromJson(params.get("body"), Order.class);
+        Order newOrder = new Order();
+
+        newOrder = g.fromJson(params.get("body"), Order.class);
         newOrder.save();
         renderJSON(newOrder);
 

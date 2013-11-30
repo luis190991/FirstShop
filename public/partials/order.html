@@ -1,5 +1,8 @@
-<div class="container">
-    <h1>Ventas</h1>
+<div class="col-md-12">
+    <div class="col-md-12">
+    <h1>Ventas</h1>    
+    </div>
+    
     <div class="panel panel-default">
         <div class="panel-body">
             <form class="form form-vertical">
@@ -7,15 +10,14 @@
                 <div class="control-group">
                     <label>No. Orden</label>
                     <div class="controls">
-                        <input type="number" class="form-control"/>
+                        <input type="number" class="form-control" />
                     </div>
-                </div>      
+                </div>
 
                 <div class="control-group">
                     <label>Cliente:</label>
                     <div class="controls">
-                        <select class="form-control" ng-model="customer" 
-                                ng-options="c.firstName for c in customers">
+                        <select class="form-control" ng-model="order.customer" ng-options="c.firstName for c in customers">
                             <option value="">Selecciona un Cliente.</option>
                         </select>
                     </div>
@@ -24,52 +26,39 @@
                 <div class="control-group">
                     <label>Fecha de Orden:</label>
                     <div class="controls">
-                        <input class="form-control" type="datetime"  ng-model="orderDate"/>
+                        <input class="form-control" type="datetime" ng-model="order.orderDate" />
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label>Fecha de Envío</label>
                     <div class="controls">
-                        <input class="form-control" type="datetime"  ng-model="shippedDate"/>
+                        <input class="form-control" type="datetime" ng-model="order.shippedDate" />
                     </div>
                 </div>
                 <br>
                 <label>Detalle de Orden:</label>
                 <div class="list-unstyled">
-                    <a  class="list-group-item" ng-repeat="orderDetail in orderDetails">
+                    <a ng-click="addOrderDetail()" class="btn btn-primary">+</a>
+                    <br>
+                    <br>
+                    <a class="list-group-item" ng-repeat="orderDetail in orderDetails">
                         <select ng-model="orderDetail.item" ng-options="c.title for c in items">
                             <option value="">-- Seleccione Producto --</option>
                         </select>
-                        <input ng-model="orderDetail.quantity" type="number" min="0"/>
-                        <button ng-click="removeOrderDetail(orderDetail)" class="btn btn-danger btn-xs" >X</button>
-                        <button ng-click="saveOrderDetail(orderDetail)" class="btn btn-success btn-xs" >Guardar</button>
-                        
+                        <input ng-model="orderDetail.quantity" type="number" min="0" />
+                        <button ng-click="removeOrderDetail(orderDetail)" class="btn btn-danger btn-xs">X</button>
                     </a>
-                    <br>
-                    <a ng-click="addOrderDetail()" class="btn btn-primary" >+</a>
                 </div>
-
+                <br>
                 <div class="control-group">
-                    <label></label>
                     <div class="controls">
-                        <button type="submit" class="btn btn-primary">
-                            Post
+                        <button type="submit" class="btn btn-primary" ng-click="saveOrder()">
+                            Crear Orden
                         </button>
                     </div>
                 </div>
-
             </form>
-
-
         </div>
-
-
-
-
     </div>
-
-
-
-
 </div>

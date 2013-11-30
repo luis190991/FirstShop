@@ -7,17 +7,17 @@
 // In this case it is a simple value service.
 
 angular.module('myApp.services', ['ngResource']).
-        factory('items', function ($resource) {
-            return $resource('/items', []);
+        factory('Item', function ($resource) {
+            return $resource('/items/:id', {id: '@id'});
 
         }).
-        factory('customers', function ($resource) {
+        factory('Customer', function ($resource) {
             return $resource('/customers/:id', {
                 id: '@id'
             });
 
         }).
-        factory('orders', function ($resource) {
+        factory('Order', function ($resource) {
             return $resource('/orders/:id', 
                 {id: '@id'}, 
                {
@@ -31,7 +31,7 @@ angular.module('myApp.services', ['ngResource']).
                 }
             });
         }).
-        factory('orderDetails', function ($resource) {
+        factory('OrderDetail', function ($resource) {
             return $resource('/orderDetails/:id', 
                 {id: '@id'}, 
                {
