@@ -1,75 +1,118 @@
-<div class="container">
-    <h1>Ventas</h1>
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <form class="form form-vertical">
+<div class="col-md-12">
+    <div class="col-md-12">
+        <h1>Ventas</h1>    
+    </div>
+    <div class="well">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form form-vertical">
+                    <div class="col-md-12">
+                        <h2>Nueva Orden</h2><br>
+                        <div class="control-group">
+                            <h4>Fecha de Compra: <small>{{fecha| date:'medium'}}</small></h4><br>
+                        </div>
+                        <div class="control-group">
+                            <h4>Fecha de Envío:  <small>{{fecha| date:'medium'}}</small></h4><br>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <select class="form-control" ng-model="order.customer" ng-options="c.firstName for c in customers">
+                                    <option value="">Selecciona un Cliente.</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br><br>
+                        <h4>Detalle de Orden:</h4>
+                        <div class="col-md-12"><hr></div>
 
+                        <div class="list-unstyled">
+                            <div class="col-md-1">
+                                <a ng-click="addOrderDetail()" class="btn btn-primary">+</a>
+                            </div>
+                            <div class="col-md-11">
+                                <a class="list-group-item" ng-repeat="orderDetail in orderDetails">
+                                    <select ng-model="orderDetail.item" ng-options="c.title for c in items">
+                                        <option value="">-- Seleccione Producto --</option>
+                                    </select>
+                                    <input ng-model="orderDetail.quantity" type="number" min="0" />
+                                    <button ng-click="removeOrderDetail(orderDetail)" class="btn btn-danger btn-xs">X</button>
+                                </a>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>             
+                </form>
                 <div class="control-group">
-                    <label>No. Orden</label>
-                    <div class="controls">
-                        <input type="number" class="form-control"/>
-                    </div>
-                </div>      
-
-                <div class="control-group">
-                    <label>Cliente:</label>
-                    <div class="controls">
-                        <select class="form-control" ng-model="customer" 
-                                ng-options="c.firstName for c in customers">
-                            <option value="">Selecciona un Cliente.</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="control-group">
-                    <label>Fecha de Orden:</label>
-                    <div class="controls">
-                        <input class="form-control" type="datetime"  ng-model="orderDate"/>
-                    </div>
-                </div>
-
-                <div class="control-group">
-                    <label>Fecha de Envío</label>
-                    <div class="controls">
-                        <input class="form-control" type="datetime"  ng-model="shippedDate"/>
-                    </div>
-                </div>
-                <br>
-                <label>Detalle de Orden:</label>
-                <div class="list-unstyled">
-                    <a  class="list-group-item" ng-repeat="orderDetail in orderDetails">
-                        <select ng-model="orderDetail.item" ng-options="c.title for c in items">
-                            <option value="">-- Seleccione Producto --</option>
-                        </select>
-                        <input ng-model="orderDetail.quantity" type="number" min="0"/>
-                        <button ng-click="removeOrderDetail(orderDetail)" class="btn btn-danger btn-xs" >X</button>
-                        <button ng-click="saveOrderDetail(orderDetail)" class="btn btn-success btn-xs" >Guardar</button>
-                        
-                    </a>
-                    <br>
-                    <a ng-click="addOrderDetail()" class="btn btn-primary" >+</a>
-                </div>
-
-                <div class="control-group">
-                    <label></label>
-                    <div class="controls">
-                        <button type="submit" class="btn btn-primary">
-                            Post
-                        </button>
-                    </div>
-                </div>
-
-            </form>
-
-
+                    <button type="submit" class="btn btn-primary" ng-click="saveOrder()">
+                        Crear Orden
+                    </button>
+                </div>   
+            </div>
         </div>
-
-
-
-
     </div>
 
+    <div class="col-md-12">
+        <hr>
+        <h1>Ordenes</h1>    
+    </div>
+    <div class="col-md-12">
 
+        <div class="col-md-6">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>No. Orden</th>                                
+                        <th>Cliente</th>
+                        <th>Fecha de Compra</th>
+                        <th>Fecha de Envío</th>
+                        <th>Detalle</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
 
+                    <tr ng-repeat="order in orders">
 
+                        <td>{{order.id}}</td>
+                        <td>{{order.customer.firstName}} {{order.customer.lastName}}</td>
+                        <td>{{order.orderDate}}</td> 
+                        <td>{{order.shippedDate}}</td>
+                        <td>
+                            <button class="btn btn-info btn-sm" ng-click="findOrderDetails(order)"> Ver
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" ng-click="deleteOrder(order, $index)"> [X]
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Articulo</th>
+                        <th>Artista</th>                                
+                        <th>P.U.</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr ng-repeat="detail in filtered">
+                        <td>{{detail.item.title}}</td>
+                        <td>{{detail.item.artist}}</td>
+                        <td>{{detail.quantity}}</td>
+                        <td>$ {{detail.item.unitPrice}}</td>
+                        <td>$ {{detail.item.unitPrice * detail.quantity}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

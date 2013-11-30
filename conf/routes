@@ -12,8 +12,8 @@ DELETE     /orders/{id}                         Orders.deleteOrder
 
 GET        /orderDetails                        OrderDetails.OrderDetails
 POST       /orderDetails                        OrderDetails.saveOrderDetail
-PUT        /orders/{id}                         OrderDetails.updateOrder
-DELETE     /orders/{id}                         OrderDetails.deleteOrderDetail
+PUT        /orderDetails/{id}                   OrderDetails.updateOrder
+DELETE     /orderDetails/{id}                   OrderDetails.deleteOrderDetail
 
 GET        /items                               Items.items
 GET        /customers                           Customers.customers

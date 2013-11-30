@@ -7,12 +7,15 @@
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" type="text/css" rel="stylesheet">
         #{stylesheet 'jquery.css' /}
         #{stylesheet 'bootstrap.min.css' /}
         #{stylesheet 'bootstrap-theme.min.css' /}
         #{stylesheet 'main.css' /}
 
         #{get 'moreScripts' /}
+        
+        
     </head>
 
 
@@ -30,16 +33,13 @@
             <nav class="collapse navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/admin/items">Clientes</a>
+                        <a href="/admin/items">Productos</a>
                     </li>
                     <li>
-                        <a href="/admin/customers">Productos</a>
+                        <a href="/admin/customers">Clientes</a>
                     </li>
                     <li>
-                        <a href="#">Ordenes</a>
-                    </li>
-                    <li>
-                        <a href="/#/orders">Detalle de Ordenes</a>
+                        <a href="/#/orders">Ordenes</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-right navbar-nav">
@@ -57,33 +57,33 @@
     </header>
 
     <div id="masthead">  
-        <div class="container">
-            <div class="row">
-                <div class="col-md-7">
-                    <h1>First Store 
-                        <p class="lead"></p>
-                    </h1>
-                </div>
-                <div class="col-md-5">
-                    <div class="well well-lg"> 
-                        <div class="row">
-                            <div class="col-sm-12">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <h1>FirstShop
+                <p class="lead"></p>
+            </h1>
+        </div>
+        <div class="col-md-5">
+            <div class="well well-lg"> 
+                <div class="row">
+                    <div class="col-sm-12">
 
 
-                            </div>
-                        </div>
                     </div>
                 </div>
-            </div> 
-        </div><!-- /cont -->
+            </div>
+        </div>
+    </div> 
+  </div><!-- /cont -->
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="top-spacer"> </div>
-                </div>
-            </div> 
-        </div><!-- /cont -->
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="top-spacer"> </div>
+          </div>
+      </div> 
+  </div><!-- /cont -->
 
     </div>
 
@@ -101,12 +101,11 @@
                         <!--/stories-->
                         <div class="row">    
                             <br>
-                            <div class="col-md-10 col-sm-9">
+                            <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-xs-9">
-                                            #{doLayout /}
-                                    </div>
-                                    <div class="col-xs-3"></div>
+                                    #{doLayout /}
+                                   
+
                                 </div>
                                 <br><br>
                             </div>
@@ -181,7 +180,7 @@
     
     <script language="javascript">
         $('table').addClass('table table-hover');
-        $('form').attr('role','form');
+        $('form').attr('role', 'form');
     </script>
 
 </body>
