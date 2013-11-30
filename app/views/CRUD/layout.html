@@ -1,20 +1,32 @@
 #{extends 'main.html' /}
 #{set title:'Tienda Online' /}
 
+<div class="container">
 
-#{if flash.success}
-<div class="crudFlash flashSuccess">
-    ${flash.success}
-</div>
-#{/if}
-#{if flash.error || error}
-<div class="crudFlash flashError">
-    ${error ?: flash.error}
-</div>
-#{/if}
+    #{if flash.success}
+    <div class="alert alert-success">
+        <div class="crudFlash flashSuccess">
+            ${flash.success}
+        </div>
+    </div>
+    #{/if}
 
-<div id="crudContent">
-    #{doLayout /}
+
+
+
+
+    #{if flash.error || error}
+    <div class="alert alert-danger">
+        <div class="crudFlash flashError">
+            ${error ?: flash.error}
+        </div>
+    </div>
+    #{/if}
+
+
+    <div id="crudContent">
+        #{doLayout /}
+    </div>
 </div>
 
 

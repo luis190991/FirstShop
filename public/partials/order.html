@@ -27,7 +27,7 @@
 
                         <div class="list-unstyled">
                             <div class="col-md-1">
-                                <a ng-click="addOrderDetail()" class="btn btn-primary">+</a>
+                                <a ng-click="addOrderDetail()" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i></a>
                             </div>
                             <div class="col-md-11">
                                 <a class="list-group-item" ng-repeat="orderDetail in orderDetails">
@@ -35,7 +35,7 @@
                                         <option value="">-- Seleccione Producto --</option>
                                     </select>
                                     <input ng-model="orderDetail.quantity" type="number" min="0" />
-                                    <button ng-click="removeOrderDetail(orderDetail)" class="btn btn-danger btn-xs">X</button>
+                                    <button ng-click="removeOrderDetail(orderDetail)" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
                                 </a>
                                 <hr>
                             </div>
@@ -78,11 +78,13 @@
                         <td>{{order.orderDate}}</td> 
                         <td>{{order.shippedDate}}</td>
                         <td>
-                            <button class="btn btn-info btn-sm" ng-click="findOrderDetails(order)"> Ver
+                            <button class="btn btn-info btn-sm" ng-click="findOrderDetails(order)"> 
+                                <i class="glyphicon glyphicon-eye-open"></i>
                             </button>
                         </td>
                         <td>
-                            <button class="btn btn-danger btn-sm" ng-click="deleteOrder(order, $index)"> [X]
+                            <button class="btn btn-danger btn-sm" ng-click="deleteOrder(order, $index)">
+                                <i class="glyphicon glyphicon-trash"></i>
                             </button>
                         </td>
                     </tr>
