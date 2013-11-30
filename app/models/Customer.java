@@ -5,6 +5,7 @@ import play.data.validation.Email;
 import play.data.validation.Password;
 import play.data.validation.Required;
 import play.data.validation.URL;
+import play.db.jpa.Blob;
 import play.db.jpa.Model;
 
 @Entity
@@ -31,15 +32,15 @@ public class Customer extends Model {
     @Required
     @Password
     public String password;
-    @URL
-    public String urlImage;
+
+    public Blob urlImage;
     
 
     public Customer() {
     }
 
     public Customer(String firstName, String lastName, String address, String city, 
-                    String state, String zip, String phone, String fax, String email, String password, String urlImage) {
+                    String state, String zip, String phone, String fax, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -50,7 +51,6 @@ public class Customer extends Model {
         this.fax = fax;
         this.email = email;
         this.password = password;
-        this.urlImage = urlImage;
     }
     
     

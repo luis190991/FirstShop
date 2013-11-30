@@ -1,3 +1,9 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+title=Titulo
+artist=Artista
+unitPrice=Precio Unitario
+crud.search = Buscar
+crud.add=Nuevo
+Items=Productos
